@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Gemini Web Proxy Bridge",
+  "version": "1.2.0",
+  "description": "Seamless bridge between local OpenAI API proxy and Gemini Web (gemini.google.com)",
+  "permissions": [
+    "tabs",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://gemini.google.com/*"],
+      "js": ["hook.js"],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://gemini.google.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "host_permissions": [
+    "http://localhost:3001/*",
+    "https://gemini.google.com/*",
+    "*://*.googleusercontent.com/*",
+    "<all_urls>"
+  ]
+}

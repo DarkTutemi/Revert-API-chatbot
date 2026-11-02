@@ -8,3 +8,19 @@ build/
 npm/platform/
 npm/platform-packages/*/mcp-server
 npm/platform-packages/*/mcp-server.exe
+npm/node_modules/
+node_modules/
+
+# Python & Environment
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv/
+env/
+venv/
+
+# Media & User Artifacts
+media/
+.agents/
+ecc/

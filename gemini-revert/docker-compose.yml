@@ -1,0 +1,24 @@
+services:
+  gateway:
+    build: .
+    # hoặc image: ghcr.io/<username>/gemini-gateway:latest
+    env_file: .env
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+
+  caddy:
+    image: caddy:2
+    ports:
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy-data:/data
+    depends_on:
+      - gateway
+    restart: unless-stopped
+
+volumes:
+  caddy-data:

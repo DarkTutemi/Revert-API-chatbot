@@ -1,0 +1,65 @@
+{
+  "manifest_version": 3,
+  "name": "Unified AI Web Proxy Bridge (ChatGPT / Gemini / DeepSeek)",
+  "version": "1.5.0",
+  "description": "All-in-one bridge connecting Chrome tabs (ChatGPT, Gemini, DeepSeek) to local Unified AI Gateway on port 3000",
+  "permissions": [
+    "tabs",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://chatgpt.com/*"],
+      "js": ["chatgpt_hook.js"],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://chatgpt.com/*"],
+      "js": ["chatgpt_content.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["https://gemini.google.com/*"],
+      "js": ["gemini_hook.js"],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://gemini.google.com/*"],
+      "js": ["gemini_content.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "https://chat.deepseek.com/*",
+        "https://*.deepseek.com/*",
+        "https://deepseek.com/*"
+      ],
+      "js": ["deepseek_hook.js"],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://chat.deepseek.com/*",
+        "https://*.deepseek.com/*",
+        "https://deepseek.com/*"
+      ],
+      "js": ["deepseek_content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "host_permissions": [
+    "http://localhost:3000/*",
+    "https://chatgpt.com/*",
+    "https://gemini.google.com/*",
+    "https://*.deepseek.com/*",
+    "https://deepseek.com/*",
+    "*://*.googleusercontent.com/*",
+    "<all_urls>"
+  ]
+}

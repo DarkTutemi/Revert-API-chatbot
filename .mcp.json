@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "reqable-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "reqable-mcp-server",
+        "--token",
+        "re5q5W9DxzSJiJdVk1tE9hAgWDicvJFPyVOVPWBNJgi3gYX04fDTGVNCPMaZht3LRV",
+        "--scope",
+        "full"
+      ],
+      "env": {
+        "REQABLE_TOKEN": "re5q5W9DxzSJiJdVk1tE9hAgWDicvJFPyVOVPWBNJgi3gYX04fDTGVNCPMaZht3LRV"
+      }
+    }
+  }
+}
